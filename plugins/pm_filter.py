@@ -49,11 +49,11 @@ async def pm_text(bot, message):
     if content.startswith("/") or content.startswith("#"): return  # ignore♀️ommands and hashtags
     if user_id in ADMINS: return # ignore admins
     k = await message.reply_text(
-         text=f"<b><i>Hɪ Bʀᴏ {user},\n\n• Yᴏᴜ Cᴀɴ'ᴛ Gᴇᴛ Mᴏᴠɪᴇs Fʀᴏᴍ Hᴇʀᴇ. Rᴇǫᴜᴇsᴛ Oɴ Oᴜʀ Mᴏᴠɪᴇ Gʀᴏᴜᴘ Oʀ Cʟɪᴄᴋ Rᴇǫᴜᴇsᴛ Hᴇʀᴇ Bᴜᴛᴛᴏɴ Bᴇʟᴏᴡ​\n\n• നിങ്ങൾക്ക് ഇവിടെ നിന്ന് സിനിമകൾ ലഭിക്കില്ല. എന്റെ ഗ്രൂപ്പിൽ ചോദിക്ക്.</i>\n\n• ροωєяє∂ ϐγ :- @Team_KL</b>",   
+         text=f"<b><i>أهلا {user},\n\nالبحث عن طريق الجروب فقط اضغط ع الزر بالاسم 👇",   
          reply_markup=InlineKeyboardMarkup([[
-             InlineKeyboardButton("💝 Kᴇʀᴀʟᴀ Rᴏᴄᴋᴇʀs 𝟹.𝟶​ 💝", url=f"https://t.me/KLMovieGroup")
+             InlineKeyboardButton("📝 ابحث هنا", url=f"https://t.me/+UZFUjDBkGFJhMWE8")
              ],[
-             InlineKeyboardButton("🎭 Kᴇʀᴀʟᴀ Rᴏᴄᴋᴇʀs 𝟸.𝟶​ 🎭", url=f"https://t.me/KL_Group2")]]))
+             InlineKeyboardButton("👾 بوتاتنا", url=f"https://t.me/Botatnaa")]]))
     await asyncio.sleep(45)
     await k.delete()
     await message.delete()   
@@ -93,7 +93,7 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"➲ {get_size(file.file_size)} ⊳ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", callback_data=f'files#{file.file_id}'
+                    text=f"﹝{get_size(file.file_size)}﹞ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.') and not x.startswith('flix') and not x.startswith('akwam') and not x.startswith('wecima') and not x.startswith('<') and not x.startswith('-') and not x.startswith('مسلسل') and not x.startswith('فيلم'), file.caption.split()))}", callback_data=f'files#{file.file_id}'
                 ),                    
             ]
             for file in files
@@ -593,14 +593,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "about":
         buttons = [[
             
-            InlineKeyboardButton('sᴜᴘᴘᴏʀᴛ ', callback_data="group_info"),
+            InlineKeyboardButton('sᴜᴘᴘᴏʀᴛ ', url='https://t.me/Botatnaa'),
             InlineKeyboardButton('ʙᴏᴛ sᴛᴀᴛᴜs', callback_data='stats')          
         ], [
             InlineKeyboardButton('sᴇʀᴠᴇʀ ɪɴꜰᴏ', callback_data='statx'),
-            InlineKeyboardButton('ᴅɪsᴄʟᴀɪᴍᴇʀ', callback_data='discl')
+            InlineKeyboardButton('ᴅɪsᴄʟᴀɪᴍᴇʀ', url='https://t.me/a_magdy7')
         ], [
-            InlineKeyboardButton('⇍ ʙᴀᴄᴋ', callback_data='start'),      
-            InlineKeyboardButton('sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', callback_data='source')
+            InlineKeyboardButton('⇍ رجوع', callback_data='start')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.edit_message_media(
@@ -922,7 +921,7 @@ async def auto_filter(client, msg, spoll=False):
             search = message.text
             find = search.split(" ")
             search = ""
-            removes = ["in","upload", "series", "full", "horror", "thriller", "mystery", "print", "file"]
+            removes = ["in","upload", "series", "full", "horror", "thriller", "عايز", "فلم", "ممكن"]
             for x in find:
                 if x in removes:
                     continue
@@ -950,7 +949,7 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"➲ {get_size(file.file_size)} ⊳ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", callback_data=f'{pre}#{file.file_id}'
+                    text=f"﹝{get_size(file.file_size)}﹞ {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.') and not x.startswith('flix') and not x.startswith('akwam') and not x.startswith('wecima') and not x.startswith('<') and not x.startswith('-') and not x.startswith('مسلسل') and not x.startswith('فيلم'), file.caption.split()))}", callback_data=f'files#{file.file_id}'
                 ),
             ]
             for file in files
@@ -1023,14 +1022,14 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"<b>❐ Here is What I Found In My Database For Your Query : <u>{search}</u></b>"
+        cap = f"<b>إليك ما عثرت عليه في قاعدة البيانات</b>"
     if imdb and imdb.get('poster'):
         try:
             send=await message.reply_photo(photo="https://telegra.ph/file/60d2e897bfdf063f81545.jpg", caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
         except (MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty):
             pic = imdb.get('poster')
             poster = pic.replace('.jpg', "._V1_UX360.jpg")
-            send=await message.reply_photo(photo="https://telegra.ph/file/60d2e897bfdf063f81545.jpg", caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
+            send=await message.reply_photo(photo="https://telegra.ph/file/5263d88df0be485e963cd.jpg", caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
         except Exception as e:
             logger.exception(e)
             send=await message.reply_photo(photo=NOR_IMG, caption=cap, reply_markup=InlineKeyboardMarkup(btn))
